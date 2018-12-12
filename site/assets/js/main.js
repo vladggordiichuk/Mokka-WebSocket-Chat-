@@ -160,7 +160,7 @@ $(document).on('keyup', 'sidebar section input[search="message"]', function() {
             data = JSON.parse(data);
             var html = '';
             data.forEach(element => {
-                html += '<item chat-id="' + element.id + '" type="message" class="' + (element.websocket > 0 ? 'online' : '') + '"><photo style="background-image: url(' + element.photo + ');"></photo><message>' + element.message + '</message><date>' + element.date + '</date></item>';
+                html += '<item chat-id="' + element.id + '" type="user" class="' + (element.websocket > 0 ? 'online' : '') + '"><photo style="background-image: url(' + element.photo + ');"></photo><message>' + element.message + '</message><date>' + element.date + '</date></item>';
             });
             $('sidebar section .searchList[message]').css('display', '');
             if (html)
