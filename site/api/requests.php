@@ -17,7 +17,8 @@ if ($_POST['action'] == 'register') {
                 if (!count($db->query('SELECT * FROM users WHERE username="' . $username . '"'))) {
                     if (strlen($password) > 1) {
                         if (strlen($photo) > 30) {
-                            $id = $db->exec('INSERT INTO `users`(`first_name`, `last_name`, `username`, `password`, `photo`, `lastOnline`) VALUES ("' . $first_name . '", "' . $last_name . '", "' . $username . '", "' . md5($password) . '", "' . $photo . '", "' . time() . '")');
+                            $db->exec('INSERT INTO `users`(`first_name`, `last_name`, `username`, `password`, `photo`, `lastOnline`) VALUES ("' . $first_name . '", "' . $last_name . '", "' . $username . '", "' . md5($password) . '", "' . $photo . '", "' . time() . '")');
+                            $id = $db->query('SELECT id FROM `users` ORDER BY id DESC')[0]['id'];
                             $_SESSION['userData']['id'] = $id;
                             $_SESSION['userData']['first_name'] = $first_name;
                             $_SESSION['userData']['last_name'] = $last_name;
